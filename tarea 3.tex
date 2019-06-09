@@ -94,6 +94,62 @@
 
             \color{azul}
             % Respuesta
+            Primero, hay que sacar la transformada de Laplace de toda la ecuación
+            para despejar $Y(s)$.
+            \begin{align*}
+                \mathcal{L}\{\ddot y - 5 \dot y + 4y\} &= \mathcal{L}\{e^{2t}\} \\
+                \mathcal{L}\{\ddot y\} - 5\mathcal{L}\{\dot y\} + 4 \mathcal{L}\{y\}
+                &= \mathcal{L}\{e^{2t}\} \\
+                s^2 Y(s) - s y(0) - \dot y(0) - 5 (sY(s) - y(0)) + 4Y(s) 
+                &= \frac{1}{s - 2} \\
+                s^2 Y(s) - s + 1 - 5s Y(s) + 5 + 4 Y(s) &= \frac{1}{s - 2} \\
+                Y(s) (s^2 - 5s + 4) + s + 6 &= \frac{1}{s - 2} \\
+                Y(s) &= \frac{1}{(s-2)(s-4)(s-1)} - \frac{(s+6)}{(s-4)(s-1)}\\
+            \end{align*}
+
+            Luego, descomponiendo en fracciones parciales.\\
+            Primero
+            \begin{align*}
+                \frac{1}{(s-2)(s-4)(s-1)}=&\frac{A}{s-2} + \frac{B}{s-4} + \frac{C}{s-1} \\
+                =&\frac{A(s-4)(s-1) + B(s-2)(s-1) + C(s-2)(s-4)}{(s-2)(s-4)(s-1)} \\
+                &\iff A(s-4)(s-1) + B(s-2)(s-1) + C(s-2)(s-4) = 1
+            \end{align*}
+            Evaluando en $s = 2$, tenemos
+            \[-4A = 1 \iff A = -\frac{1}{4}\]
+            Evaluando en $s = 4$ tenemos
+            \[6B = 1 \iff B = \frac{1}{6}\]
+            Evaluando en $s = 1$ tenemos
+            \[3C = 1 \iff C = \frac{1}{3}\]
+
+            Segundo
+            \begin{align*}
+                \frac{s+6}{(s-4)(s-1)} &= \frac{D}{s-4} + \frac{E}{s-1} \\
+                &= \frac{D(s-1) + E(s-4)}{(s-4)(s-1)} \\
+                &\iff D(s-1) + E(s-4) = s+6
+            \end{align*}
+            Evaluando en $s = 4$ tenemos que
+            \[3D = 10 \iff D = \frac{10}{3}\]
+            Evaluando en $s = 1$ tenemos que
+            \[-3E = 7 \iff E = -\frac{7}{3}\]
+
+            Juntando estas dos cosas, tenemos que 
+            \begin{align*}
+                Y(s) &= -\frac{1}{4} \frac{1}{s-2} + \frac{1}{6} \frac{1}{s-4}
+                \frac{1}{3} \frac{1}{s-1} + \frac{10}{3} \frac{1}{s-4} 
+                - \frac{7}{3} \frac{1}{s-1} \\
+                &= -\frac{1}{4} \frac{1}{s-2} + \frac{7}{2}\frac{1}{s-4} 
+                - 2\frac{1}{s-1}
+            \end{align*}
+            De aquí tenemos que 
+            \begin{align*}
+                \mathcal{L}^{-1}\{Y(s)\} &= \mathcal{L}^{-1}\{\frac{1}{4} \frac{1}{s-2} 
+                + \frac{7}{2}\frac{1}{s-4} - 2\frac{1}{s-1}\} \\
+                y(t) &= \frac{1}{4}\mathcal{L}^{-1}\{\frac{1}{s-2}\}
+                +\frac{7}{2}\mathcal{L}^{-1}\{\frac{1}{s-4}\}
+                -2\mathcal{L}^{-1}\{\frac{1}{s-1}\} \\
+                y(t) &= \frac{1}{4}e^{2t}+\frac{7}{2}e^{4t}-2e^{t}
+            \end{align*}
+            Que es la solución buscada.
         }
 
         % Ejercicio 9
@@ -102,6 +158,33 @@
 
             \color{azul}
             % Respuesta
+            Primero, hay que sacar la transformada de Laplace de toda la
+            ecuación para despejar $Y(s)$.
+            \begin{align*}
+                \mathcal{L}\{\ddot y + y\} &= \mathcal{L}\{t\sen t\} \\
+                \mathcal{L}\{\ddot y\} + \mathcal{L}\{y\}
+                &= -\frac{d}{ds}\mathcal{L}\{\sen t\}\\
+                s^2 Y(s) - s y(0) - \dot y(0) + Y(s) 
+                &= -\frac{d}{ds}\frac{1}{s^2+1}\\
+                s^2 Y(s) - s - 2 + Y(s) &= \frac{2s}{(s^2+1)^2} \\
+                Y(s) (s^2+1) - s - 2 &= \frac{2s}{(s^2+1)^2}\\
+                Y(s) &= \frac{2s}{(s^2+1)^3} + \frac{s+2}{s^2+1} \\
+                Y(s) &= 2\frac{s}{s^2+1}\frac{1}{s^2+1}\frac{1}{s^2+1}
+                + \frac{s}{s^2+1} + 2\frac{1}{s^2+1}
+            \end{align*}
+            Ahora, hay que sacar la transformada inversa.
+            \begin{align*}
+                \mathcal{L}^{-1}\{Y(s)\} 
+                    &= \mathcal{L}^{-1}\{
+                        2\frac{s}{s^2+1}\frac{1}{s^2+1}\frac{1}{s^2+1}
+                        + \frac{s}{s^2+1} + 2\frac{1}{s^2+1}
+                    \} \\
+                y(t) &= 2\mathcal{L}^{-1}\{\frac{s}{s^2+1}\frac{1}{s^2+1}\frac{1}{s^2+1}\} 
+                    + \mathcal{L}^{-1}\{\frac{s}{s^2+1}\} + 2\mathcal{L}^{-1}\{\frac{1}{s^2+1}\}
+                    \\
+                y(t) &= 2\cos{t}\sin^{2}{t} + \cos{t} + 2\sin{t}
+            \end{align*}
+            Que es la solución buscada.
         }
 
         % Ejercicio 10
@@ -110,6 +193,121 @@
 
             \color{azul}
             % Respuesta
+        
+            Primero hay qu sacar la transformada de 
+            Laplace de toda la ecuacioń, e intentar despejar $Y(s)$.
+            \begin{align*}
+                \mathcal{L}\{\ddot y + \dot y + y\} &= \mathcal{L}\{1 + e^{-t}\}\\
+                \mathcal{L}\{\ddot y\} + \mathcal{L}\{\dot y\} + \mathcal{L}\{y\}
+                &= \mathcal{L}\{1\} + \mathcal{L}\{e^{-t}\} \\
+                s^2 Y(s) - s y(0) - \dot y(0) + sY(s) - y(0) + Y(s) &= \frac{1}{s}
+                + \frac{1}{s+1} \\
+                s^2 Y(s) - 3s + 5 + s Y(s) - 3 + Y(s) &= \frac{1}{s} + \frac{1}{s+1}\\
+                Y(s) (s^2 + s + 1) - (3s-2) &= \frac{1}{s} + \frac{1}{s+1}\\
+                Y(s) &= \frac{1}{s(s^2 + s + 1)} + \frac{1}{(s+1)(s^2 + s + 1)} 
+                + \frac{3s-2}{s^2 + s + 1}
+            \end{align*}
+            Luego, descompongamos algunas de las expresiones en fraccciones
+            parciales.
+            Primero
+            \begin{align*}
+                \frac{1}{s(s^2+s+1)} &= \frac{A}{s} + \frac{Bs + C}{s^2+s+1} \\
+                &= \frac{As^2+As+A+Bs^2+Cs}{s(s^2+s+1)} \\
+                &\iff 1 = As^2+As+A+Bs^2+Cs
+            \end{align*}
+            Que nos define un sistemas de ecuaciones lineales.
+
+            Para resolverlo, primero obtenemos
+            \[A = 1\]
+            Y usando este valor de $A$, podemos obtener
+            \[A + C = 0 \implies C = -1\]
+            Y
+            \[A + B = 0 \implies B = -1\]
+            Luego, para la otra expresión
+            \begin{align*}
+                \frac{1}{(s+1)(s^2 + s + 1)} &= \frac{A}{s+1} + \frac{Bs+C}{s^2+s+1} \\
+                &= \frac{As^2+As+A+Bs^2+Bs+Cs+C}{s(s^2+s+1)} \\
+                &\iff 1 = 
+            \end{align*}
+            Que defines un sistema de ecuaciones.
+            \begin{align*}
+                A + B &= 0 \\
+                A + B + C &= 0 \\
+                A + C &= 1
+            \end{align*}
+            Para resolverlo, primero restamos las dos primeras ecuaciones
+            \[(A+B)-(A+B+C) = 0 - 0 \implies C = 0\]
+            Sustituyendo en la tercera ecuación, obtenemos
+            \[A + 0 = 1 \implies A = 1\]
+            Y sustituyendo esto en la primera tenemos que
+            \[1 + B = 0 \implies B = -1\]
+
+            Con esto, se puede reescribir $Y(s)$ como 
+            \begin{align*}
+                Y(s) &= \frac{1}{s} - \frac{s+1}{s^2+s+1} + \frac{1}{s+1} 
+                - \frac{s}{s^2+s+1} + \frac{3s-2}{s^2+s+1} \\
+                Y(s) &= \frac{1}{s} + \frac{1}{s+1} + \frac{s-3}{s^2+s+1} \\
+            \end{align*}
+
+            Luego, notemos que $\mathcal{L}\{e^{at}f(t)\} = F(s-a)$, 
+            donde $F(s) = \mathcal{L}\{f(t)\}$.
+
+            Por lo que en particular
+            \[\mathcal{L}\{e^{-at}\cos(bt)\} = \frac{s+a}{(s+a)^2+b^2}\]
+            Y 
+            \[\mathcal{L}\{e^{-at}\sin(bt)\} = \frac{b}{(s+a)^2+b^2}\]
+
+
+            Ahora, vamos a llevar al último término a una forma similar a esta.
+
+            Primera, completamos el cuadrado del denominador
+            \[
+                \frac{s-3}{s^2+s+1} 
+                = \frac{s-3}{s^2+s+\frac{1}{4} + \frac{3}{4}}
+                = \frac{s-3}{(s+\frac{1}{2})^2+\frac{3}{4}}
+            \]
+
+            Luego, forzamos a que la constante de nominador coincida con la
+            constante del cuadrado, aunque esto divide la expresión en dos.
+            \[
+                \frac{s-3}{(s+\frac{1}{2})^2+\frac{3}{4}} 
+                = \frac{s+\frac{1}{2}}{(s+\frac{1}{2})^2+\frac{3}{4}}
+                - \frac{7}{2}\frac{1}{(s+\frac{1}{2})^2+\frac{3}{4}}
+            \]
+            Ahora, en esta otra parte, hay que forzar a que el nominador sea la
+            raíz del nominador.
+            \[
+                \frac{7}{2}\frac{1}{(s+\frac{1}{2})^2+\frac{3}{4}} 
+                = \frac{7}{2} \frac{1}{(s+\frac{1}{2})^2+\frac{3}{4}}
+                \cdot \frac{\frac{\sqrt{3}}{2}}{\frac{\sqrt{3}}{2}}
+                = \frac{7}{\sqrt{3}}\frac{\frac{\sqrt{3}}{2}}{(s+\frac{1}{2})
+                +\frac{3}{4}}
+            \]
+            
+            Entonces, se reescribe $Y(s)$ como 
+            \[
+                Y(s) = \frac{1}{s} + \frac{1}{s+1}
+                + \frac{s+\frac{1}{2}}{(s+\frac{1}{2})^2+\frac{3}{4}}
+                -\frac{7}{\sqrt{3}}\frac{\frac{\sqrt{3}}{2}}{(s+\frac{1}{2})+\frac{3}{4}}
+            \]
+
+            Ahora, resolviendo para encontrar la inversa de esto
+            \begin{align*}
+                \mathcal{L}^{-1}\{Y(s)\} 
+                &= \mathcal{L}^{-1}\{
+                    \frac{1}{s} + \frac{1}{s+1}
+                    + \frac{s+\frac{1}{2}}{(s+\frac{1}{2})^2+\frac{3}{4}}
+                    - \frac{7}{\sqrt{3}}\frac{\frac{\sqrt{3}}{2}}{(s+\frac{1}{2})+\frac{3}{4}}
+                \} \\
+                y(t) &= \mathcal{L}^{-1}\{\frac{1}{s}\} 
+                    + \mathcal{L}^{-1}\{\frac{1}{s+1}\}
+                    + \mathcal{L}^{-1}\{\frac{s+\frac{1}{2}}{(s+\frac{1}{2})^2+\frac{3}{4}}\} 
+                    - \frac{7}{\sqrt{3}} \cdot \mathcal{L}^{-1}\{\frac{\frac{\sqrt{3}}{2}}{(s+\frac{1}{2})+\frac{3}{4}}\}
+                    \\
+                y(t) &= 1 + e^{-t} + e^{-\frac{1}{2}t}\sin{\frac{3}{4}t}
+                    - \frac{7}{\sqrt{3}}\cdot e^{-\frac{1}{2}t}\cos{\frac{3}{4}t}
+            \end{align*}
+            Que es la solución buscada.
         }
     \end{enumerate}
 \end{document}
