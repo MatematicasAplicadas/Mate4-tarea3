@@ -244,7 +244,116 @@
             $t\ddot y - (4 + t)\dot y + 2y = 0$
 
             \color{azul}
-            % Respuesta
+            Obtenemos la forma estándar al dividir por $t$
+            $$\ddot y-\frac{t+4}{t}\dot y+\frac{2}{t}y=0$$
+            $t_0=0$ es un punto singular regular, pues
+            \begin{eqnarray*}
+                \lim_{t_0\to 0}{-\frac{t+4}{t}t}=\lim_{t_0\to 0}{-t-4}=-4=p_0 &
+                \lim_{t_0\to 0}{\frac{2}{t}t^2}=\lim_{t_0\to 0}{2t}=0=q_0
+            \end{eqnarray*}
+            De ahí, la ecuación indicial queda $r^2-5r=0$ y sus raíces son $r_1=5$ y $r_2=0$.
+
+            Por el teorema anterior, la ecuación diferencial dada tiene dos soluciones linealmente independientes: la
+            segunda puede contener un término logarítmico.
+
+            Proponemos como la primera solución
+            $$y_1(t)=\sum_{n=0}^{\infty}{a_nt^{n+r_1}}$$
+            Entonces
+            $$\dot y_1(t)=\sum_{n=0}^{\infty}{a_n(n+r_1)t^{n+r_1-1}}$$
+            $$\ddot y_1(t)=\sum_{n=0}^{\infty}{a_n(n+r_1)(n+r_1-1)t^{n+r_1-2}}$$
+            Sustituyendo
+            \[
+                t\sum_{n=0}^{\infty}{a_n(n+r_1)(n+r_1-1)t^{n+r_1-2}}
+                -(4+t)\sum_{n=0}^{\infty}{a_n(n+r_1)t^{n+r_1-1}}
+                +2\sum_{n=0}^{\infty}{a_nt^{n+r_1}}=0
+            \]
+            \[
+                \sum_{n=0}^{\infty}{a_n(n+r_1)(n+r_1-1)t^{n+r_1-1}}
+                -\sum_{n=0}^{\infty}{4a_n(n+r_1)t^{n+r_1-1}}
+                -\sum_{n=0}^{\infty}{a_n(n+r_1)t^{n+r_1}}
+                +2\sum_{n=0}^{\infty}{a_nt^{n+r_1}}=0
+            \]
+            \[
+                \sum_{n=0}^{\infty}{a_n(n+r_1)t^{n+r_1-1}[n+r_1-1-4]}
+                +\sum_{n=0}^{\infty}{a_nt^{n+r_1}[2-n-r_1]}=0
+            \]
+            \[
+                a_0r_1t^{r_1-1}(r_1-5)
+                +\sum_{n=1}^{\infty}{a_n(n+r_1)(n+r_1-5)t^{n+r_1-1}}
+                +\sum_{n=0}^{\infty}{a_n(2-n-r_1)t^{n+r_1}}=0
+            \]
+            \[
+                a_0r_1(r_1-5)t^{r_1-1}
+                +\sum_{n=0}^{\infty}{a_{n+1}(n+r_1+1)(n+r_1-4)t^{n+r_1}}
+                +\sum_{n=0}^{\infty}{a_n(2-n-r_1)t^{n+r_1}}=0
+            \]
+            \[
+                a_0r_1(r_1-5)t^{r_1-1}
+                +\sum_{n=0}^{\infty}{[
+                    a_{n+1}(n+r_1+1)(n+r_1-4)
+                    +a_n(2-n-r_1)
+                ]t^{n+r_1}}=0
+            \]
+            Igualamos los términos a cero, del primer término obtenemos la ecuación indicial, y del resto tendremos
+            \[a_{n+1}(n+r_1+1)(n+r_1-4)+a_n(2-n-r_1)=0\]
+            \[a_{n+1}(n+r_1+1)(n+r_1-4)=a_n(n+r_1-2)\]
+            \begin{equation}
+                a_{n+1}=\frac{a_n(n+r_1-2)}{(n+r_1+1)(n+r_1-4)}
+                \label{recurrente}
+            \end{equation}
+            Como $r_1=5$
+            \[a_{n+1}=\frac{a_n(n+3)}{(n+6)(n+1)}\]
+            \begin{center}
+                \begin{tabular}{ll}
+                    si $n=0$ & $a_1=\frac{3a_0}{6}=\frac{a_0}{2}$ \\
+                    si $n=1$ & $a_2=\frac{4a_1}{(7)(2)}=\frac{a_0}{7}$ \\
+                    si $n=2$ & $a_3=\frac{5a_2}{(8)(3)}=\frac{5a_0}{168}$ \\
+                    si $n=3$ & $a_4=\frac{6a_3}{(9)(4)}=\frac{5a_0}{1008}$ \\
+                    si $n=4$ & $a_5=\frac{7a_4}{(10)(5)}=\frac{a_0}{1440}$ \\
+                    \vdots   & \vdots
+                \end{tabular}
+            \end{center}
+            Por lo que 
+            \[
+                y_1(t)=a_0t^5\left[
+                    1+\frac{t}{2}+\frac{t^2}{7}+\frac{5t^3}{168}+\frac{5t^4}{1008}+\ldots
+                \right]
+            \]
+            Para la segunda solución linealmente independiente proponemos
+            $$y_2(t)=Cy_1\ln{t}+t^{r_2}\sum_{n=0}^{\infty}{b_nt^{n}}$$
+            Es decir
+            $$y_2(t)=Cy_1\ln{t}+t^{0}\sum_{n=0}^{\infty}{b_nt^{n}}$$
+            $$y_2(t)=Cy_1\ln{t}+\sum_{n=0}^{\infty}{b_nt^{n}}$$
+            Supongamos que ésta solución carece de término logaritmico, es decir, $C=0$, por lo que la propuesta se
+            simplificará a
+            $$y_2(t)=\sum_{n=0}^{\infty}{b_nt^{n}}$$
+            Como es parecida a $y_1(t)$, el procedimiento para encontrar los coeficientes es idéntico hasta la ecuación
+            (\ref{recurrente}), por lo que
+            \[
+                b_{n+1}=\frac{b_n(n-2)}{(n+1)(n-4)}
+            \]
+            \begin{center}
+                \begin{tabular}{ll}
+                    si $n=0$ & $b_1=\frac{-2b_0}{-4}=\frac{b_0}{2}$ \\
+                    si $n=1$ & $b_2=\frac{-b_1}{(2)(-3)}=\frac{b_0}{12}$ \\
+                    si $n=2$ & $b_3=\frac{0b_2}{(3)(-2)}=0$ \\
+                \end{tabular}
+            \end{center}
+            En este punto nos detenemos, pues al haber un cero el resto de coeficientes serán cero.
+
+            Por lo tanto
+            \[
+                y_2(t)=b_0\left(1+\frac{t}{2}+\frac{t^2}{12}\right)
+            \]
+            Que se puede comprobar fácilmente que corresponde a una solución de la ecuación diferencial y además es
+            linealmente independiente a $y_1(t)$.
+
+            Por lo tanto la solución buscada es
+            \[
+                y(t)=
+                a_0t^5\left[1+\frac{t}{2}+\frac{t^2}{7}+\frac{5t^3}{168}+\frac{5t^4}{1008}+\ldots\right]
+                +b_0\left(1+\frac{t}{2}+\frac{t^2}{12}\right)
+            \]
         }
 
         % Ejercicio 8 
