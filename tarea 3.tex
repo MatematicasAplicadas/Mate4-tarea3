@@ -103,8 +103,8 @@
                 s^2 Y(s) - s y(0) - \dot y(0) - 5 (sY(s) - y(0)) + 4Y(s) 
                 &= \frac{1}{s - 2} \\
                 s^2 Y(s) - s + 1 - 5s Y(s) + 5 + 4 Y(s) &= \frac{1}{s - 2} \\
-                Y(s) (s^2 - 5s + 4) + s + 6 &= \frac{1}{s - 2} \\
-                Y(s) &= \frac{1}{(s-2)(s-4)(s-1)} - \frac{(s+6)}{(s-4)(s-1)}\\
+                Y(s) (s^2 - 5s + 4) - s + 6 &= \frac{1}{s - 2} \\
+                Y(s) &= \frac{1}{(s-2)(s-4)(s-1)} + \frac{(s-6)}{(s-4)(s-1)}\\
             \end{align*}
 
             Luego, descomponiendo en fracciones parciales.\\
@@ -115,7 +115,7 @@
                 &\iff A(s-4)(s-1) + B(s-2)(s-1) + C(s-2)(s-4) = 1
             \end{align*}
             Evaluando en $s = 2$, tenemos
-            \[-4A = 1 \iff A = -\frac{1}{4}\]
+            \[-2A = 1 \iff A = -\frac{1}{2}\]
             Evaluando en $s = 4$ tenemos
             \[6B = 1 \iff B = \frac{1}{6}\]
             Evaluando en $s = 1$ tenemos
@@ -123,31 +123,31 @@
 
             Segundo
             \begin{align*}
-                \frac{s+6}{(s-4)(s-1)} &= \frac{D}{s-4} + \frac{E}{s-1} \\
+                \frac{s-6}{(s-4)(s-1)} &= \frac{D}{s-4} + \frac{E}{s-1} \\
                 &= \frac{D(s-1) + E(s-4)}{(s-4)(s-1)} \\
-                &\iff D(s-1) + E(s-4) = s+6
+                &\iff D(s-1) + E(s-4) = s-6
             \end{align*}
             Evaluando en $s = 4$ tenemos que
-            \[3D = 10 \iff D = \frac{10}{3}\]
+            \[3D = -2 \iff D = -\frac{2}{3}\]
             Evaluando en $s = 1$ tenemos que
-            \[-3E = 7 \iff E = -\frac{7}{3}\]
+            \[-3E = -5 \iff E = \frac{5}{3}\]
 
             Juntando estas dos cosas, tenemos que 
             \begin{align*}
-                Y(s) &= -\frac{1}{4} \frac{1}{s-2} + \frac{1}{6} \frac{1}{s-4}
-                \frac{1}{3} \frac{1}{s-1} + \frac{10}{3} \frac{1}{s-4} 
-                - \frac{7}{3} \frac{1}{s-1} \\
-                &= -\frac{1}{4} \frac{1}{s-2} + \frac{7}{2}\frac{1}{s-4} 
-                - 2\frac{1}{s-1}
+                Y(s) &= -\frac{1}{2} \frac{1}{s-2} + \frac{1}{6} \frac{1}{s-4}
+                + \frac{1}{3} \frac{1}{s-1} - \frac{2}{3} \frac{1}{s-4} 
+                + \frac{5}{3} \frac{1}{s-1} \\
+                &= -\frac{1}{2} \frac{1}{s-2} - \frac{1}{2}\frac{1}{s-4} 
+                + 2\frac{1}{s-1}
             \end{align*}
             De aquí tenemos que 
             \begin{align*}
-                \mathcal{L}^{-1}\{Y(s)\} &= \mathcal{L}^{-1}\{\frac{1}{4} \frac{1}{s-2} 
-                + \frac{7}{2}\frac{1}{s-4} - 2\frac{1}{s-1}\} \\
-                y(t) &= \frac{1}{4}\mathcal{L}^{-1}\{\frac{1}{s-2}\}
-                +\frac{7}{2}\mathcal{L}^{-1}\{\frac{1}{s-4}\}
-                -2\mathcal{L}^{-1}\{\frac{1}{s-1}\} \\
-                y(t) &= \frac{1}{4}e^{2t}+\frac{7}{2}e^{4t}-2e^{t}
+                \mathcal{L}^{-1}\{Y(s)\} &= \mathcal{L}^{-1}\{-\frac{1}{2} \frac{1}{s-2} 
+                - \frac{1}{2}\frac{1}{s-4} + 2\frac{1}{s-1}\} \\
+                y(t) &= -\frac{1}{2}\mathcal{L}^{-1}\{\frac{1}{s-2}\}
+                -\frac{1}{2}\mathcal{L}^{-1}\{\frac{1}{s-4}\}
+                +2\mathcal{L}^{-1}\{\frac{1}{s-1}\} \\
+                y(t) &= -\frac{1}{2}e^{2t}-\frac{1}{2}e^{4t}+2e^{t}
             \end{align*}
             Que es la solución buscada.
         }
@@ -304,8 +304,8 @@
                     + \mathcal{L}^{-1}\{\frac{s+\frac{1}{2}}{(s+\frac{1}{2})^2+\frac{3}{4}}\} 
                     - \frac{7}{\sqrt{3}} \cdot \mathcal{L}^{-1}\{\frac{\frac{\sqrt{3}}{2}}{(s+\frac{1}{2})+\frac{3}{4}}\}
                     \\
-                y(t) &= 1 + e^{-t} + e^{-\frac{1}{2}t}\sin{\frac{3}{4}t}
-                    - \frac{7}{\sqrt{3}}\cdot e^{-\frac{1}{2}t}\cos{\frac{3}{4}t}
+                y(t) &= 1 + e^{-t} + e^{-\frac{1}{2}t}\cos{\frac{\sqrt{3}}{2}t}
+                    - \frac{7}{\sqrt{3}}\cdot e^{-\frac{1}{2}t}\sin{\frac{\sqrt{3}}{2}t}
             \end{align*}
             Que es la solución buscada.
         }
