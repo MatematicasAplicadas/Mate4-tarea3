@@ -31,39 +31,190 @@
     {\bf Resuelve las siguientes ecuaciones diferenciales}
     \begin{enumerate}
         
-        % Ejercicio 1
+         % Ejercicio 1
         \item {
-            $(t - 2)^2 \ddot y + 5(t-2)\dot y+4y=0$
-
-            \color{azul}
-            % Respuesta
-            
+        	$(t - 2)^2 \ddot y + 5(t-2)\dot y+4y=0$ con $t > 0$ \\
+        	
+        	\color{azul}
+        	% Respuesta
+        	
+        	Utilizamos el método de la Ecuación de Euler para encontrar la solución general de la ecuación, podemos utilizar este método ya que la ecuación es de la forma $(t - t_0)^2\ddot{y} + \alpha (t - t_0) \dot{y} + \beta y = 0$ con $\alpha$ y $\beta$ constantes. Esta ecuación es también una ecuación de Euler, con una singularidad en $t = t_0$ en lugar de $t = 0$. En este caso buscamos por soluciones de la forma $(t - t_0)^r$\\
+        	
+        	Queremos ver en que caso cae de acuerdo a las raíces de su ecuación característica, así que substituimos $y = (t-2)^r$ en la ecuación y obtenemos las raíces de la siguiente forma:
+        	
+        	$r(r -1)(t -2)^r + 5r(t-2)^r + 4(t-2)^r$\\
+        	$[r(r-1) + 5r + 4] (t-2)^r$\\
+        	$[r^2 + 4r + 4] (t-2)^r$\\
+        	$(r+2)^2(t-2)^r$\\
+        	
+        	La ecuación $(r+2)^2 = 0$ tiene $r = -2$ como raíz repetida, así que caemos en el Caso 2.\\
+        	De ahí, $y_1(t-2) = (t-2)^{-2}, \ \  y_2(t-2) = (t-2)^{-2}ln(t-2)$\\
+        	
+        	Por lo tanto, tenemos que la solución general de la ecuación es:\\
+        	
+        	$y(t) = (c_1 + c_2 ln(t-2))(t-2)^{-2} $ \\
+        	
+        	$y(t) = \frac{c_1 + c_2 ln(t-2)}{(t-2)^2} $\\
+        	
+        	
+        	
         }
         % Ejercicio 2
         \item {
-            $t^2 \ddot y+ 3t \dot y + 2y =0$
-
-            \color{azul}
-            % Respuesta
-            
+        	$t^2 \ddot y+ 3t \dot y + 2y =0$ con $t > 0$ \\
+        	
+        	\color{azul}
+        	% Respuesta
+        	Utilizamos el método de la Ecuación de Euler para encontrar la solución general de la ecuación, podemos utilizar este método ya que la ecuación es de la forma $t^2\ddot{y} + \alpha t \dot{y} + \beta y = 0$ con $\alpha$ y $\beta$ constantes.\\
+        	
+        	Queremos ver en que caso cae de acuerdo a las raíces de su ecuación característica, así que substituimos $y = t^r$ en la ecuación y obtenemos las raíces de la siguiente forma:
+        	
+        	$r(r -1)t^r + 3rt^r + 2t^r$\\
+        	$[r(r-1) + 3r + 2] t^r$\\
+        	$[r^2 + 2r + 2] t^r$\\
+        	Las raíces de la ecuación $r^2 + 2r + 2 = 0$ son:\\
+        	$\frac{-2 \pm \sqrt{4 - 8}}{2} = -1\pm i$\\
+        	
+        	Tenemos la siguiente solución compleja:\\
+        	
+        	\begin{align*}
+        	\phi(t) &= t^{-1 + i} = t^{-1}t^{i}\\
+        	&= t^{-1}e^{(lnt)i} = t^{-1}e^{i(lnt)}\\
+        	&= t^{-1}[cos(lnt) + isen(lnt)]
+        	\end{align*}
+        	
+        	Consecuentemente vemos que al tener soluciones complejas, caemos en el Caso 3 y tenemos:
+        	
+        	$y_1(t) = Re\{\phi(t)\} = t^{-1}cos(lnt) $ y 
+        	$y_2(t) = Im\{\phi(t)\} = t^{-1}sen(lnt) $\\
+        	
+        	
+        	Por lo tanto, la solución general de la ecuación es:\\
+        	
+        	$y(t) = (c_1cos(ln(t)) + c_2 sen(ln(t)))(t)^{-1} $ \\
+        	
+        	$y(t) = \frac{c_1cos(ln(t)) + c_2 sen(ln(t))}{t} $\\
+        	
+        	
         }
         % Ejercicio 3
         \item {
-            Usar el método de reducción de orden para demostrar que 
-            $y_2(t) = t ^ {r_1} ln t$ cuando se tienen raíces repetidas en la 
-            ecuación de Euler. 
-
-            \color{azul}
-            % Respuesta
-           
+        	Usar el método de reducción de orden para demostrar que 
+        	$y_2(t) = t ^ {r_1} ln t$ cuando se tienen raíces repetidas en la 
+        	ecuación de Euler. 
+        	
+        	\color{azul}
+        	% Respuesta
+        	El método de reducción de orden nos permite usar una solución conocida $Y_1$ de una ecuación diferencial lineal de segundo orden homogénea para encontrar una solución lineal independiente de $Y_2$\\
+        	
+        	Así que consideramos la ecuación de Euler $t^2\ddot{y} + \alpha t \dot{y} + \beta y = 0$ y suponemos que $y_1$, donde $y_1 = t^{r_1}$ es una solución a la ecuación. Y $r_1 = \frac{1 - \alpha}{2}$ \\
+        	
+        	Dividimos la ecuación de Euler entre $t^2$
+        	$\ddot{y} + \frac{\alpha}{t}\dot{y} + \frac{\beta}{t^2}y = 0$\\
+        	
+        	Sabemos que para resolver una ecuación diferencial de segundo orden, debemos tener dos soluciones linealmente independientes. Así que, debemos determinar una segunda solución linealmente independiente y lo obtenemos al intentar encontrar una solución de la forma: $y_2 = v(t) y_1 = v(t) t^{r_1}$ donde $v(t)$ no es una función constante, ya que si fuera constante, $y_1$ y $y_2$ serían linealmente dependientes.\\
+        	
+        	Calculamos $\dot{y_2}(t) = \dot{y_1} v(t) + \dot{v}(t)y_1  $\\
+        	Calculamos $\ddot{y_2}(t) = \ddot{y_1} v(t) + \dot{v}(t)\dot{y_1} + \dot{y_1}\dot{v}(t) + \ddot{v}(t)y_1  $\\
+        	
+        	Sustituimos en la ecuación dividida de Euler:
+        	
+        	$ [\ddot{y_1} v(t) + 2\dot{v}(t)\dot{y_1} + \ddot{v}(t)y_1] + \frac{\alpha}{t} [\dot{y_1} v(t) + \dot{v}(t)y_1] + \frac{\beta}{t^2} [v(t) y_1] = 0$\\
+        	
+        	Multiplicamos por $t^2$ y factorizamos:
+        	
+        	$[t^2y_1]\ddot{v}(t) + [t^2(2\dot{y_1} + \frac{\alpha}{t}y_1)]\dot{v}(t) + [t^2\ddot{y_1} + \alpha t \dot{y_1} + \beta y_1]v(t) = 0$\\
+        	
+        	Sabemos que la ecuación de Euler es igual a cero, así que eliminamos el factor multiplicado por $v(t)$ y volvemos a dividir entre $t^2$\\
+        	$[y_1]\ddot{v}(t) + [2\dot{y_1} + \frac{\alpha}{t}y_1]\dot{v}(t) = 0$\\
+        	
+        	Hacemos un cambio de variable donde $w = \dot{v}(t) \ y \  \dot{w} = \ddot{v}(t)$\\
+        	$[y_1]\dot{w} + [2\dot{y_1} + \frac{\alpha}{t}y_1]w = 0$\\
+        	
+        	Ahora, queremos obtener w, así que derivamos $\dot{w}$\\
+        	$\frac{dw}{dt}[y_1] + w[2\dot{y_1} + \frac{\alpha}{t}y_1] = 0$\\
+        	$\frac{dw}{dt}[y_1] = - w[2\dot{y_1} + \frac{\alpha}{t}y_1]$\\
+        	$\frac{dw}{dt} = - w[2\frac{\dot{y_1}}{y_1} + \frac{\alpha}{t}]$\\
+        	$\frac{dw}{w} = - [2\frac{\dot{y_1}}{y_1}dt + \frac{\alpha}{t}dt]$\\
+        	
+        	Integramos e ignoramos las constantes que se acumulen por el momento:\\
+        	$\int \frac{dw}{w} dt + 2 \int \frac{\dot{y_1}}{y_1} dt + \int \frac{\alpha}{t} dt = 0 $\\
+        	
+        	Recordemos que $y_1$ es una función de t\\
+        	$ln(w) + 2ln(y_1) + \alpha ln(t) = 0$\\
+        	
+        	Usamos leyes de los logaritmos\\
+        	$ln(w) + ln(y_1^2) + \alpha ln(t) = 0$\\
+        	$ln(w y_1^2) = -\alpha ln(t) $\\
+        	
+        	Aplicamos epsilon de los dos lados\\
+        	$wy_1^2 = e^{-\alpha ln(t)}$\\
+        	$w = \frac{e^{-\alpha ln(t)}}{y_1^2}$\\
+        	
+        	Regresamos a las variables originales y tenemos:\\
+        	$\dot{v} = w = \frac{e^{-\alpha ln(t)}}{y_1^2}$\\
+        	
+        	Integramos de nuevo para obtener v e ignoramos las constantes por el momento\\
+        	$\int \dot{v}(t) dt = \int \frac{e^{-\alpha ln(t)}}{y_1^2} dt$\\
+        	$v(t) = \int \frac{t^{-\alpha}}{y_1^2}dt$\\
+        	$v(t) = \int \frac{t^{-\alpha}}{y_1^2}dt$\\
+        	
+        	Sustituimos el valor de $y_1$ en la integral\\
+        	$v(t) = \int \frac{t^{-\alpha}}{(t^{r_1})^2}dt$\\
+        	$v(t) = \int \frac{1}{t^{2r_1 + \alpha}}dt$\\
+        	
+        	Sustituimos el valor de $r_1$ en la integral\\
+        	$v(t) = \int \frac{1}{t^{2(\frac{1 - \alpha}{2}) + \alpha}}dt$\\
+        	$v(t) = \int \frac{1}{t^{1 - \alpha + \alpha}}dt$\\
+        	$v(t) = \int \frac{1}{t^{1}}dt$\\
+        	
+        	Finalmente obtenemos el resultado de la integral\\
+        	$v(t) = ln(t)$\\
+        	
+        	Por lo tanto $y_2 = t^{r_1}ln(t)$ $\blacksquare$\\
+        	
+        	
+        	
+        	
+        	
         }
         % Ejercicio 4
         \item {
-            $2t^2\ddot y + 3t\dot y - (1 - t)y = 0$
-
-            \color{azul}
-            % Respuesta
-
+        	$2t^2\ddot y + 3t\dot y - (1 + t)y = 0$
+        	
+        	\color{azul}
+        	% Respuesta
+        	Queremos utilizar el método de Frobenius, así que verificamos que $x= 0$ sea un punto singular para $ t^2\ddot{y} + \frac{3}{2}t\dot{y} - \frac{(1 + t)}{2} y$\\
+        	
+        	Veamos si los límites existen:
+        	
+        	$\lim_{t \rightarrow 0} \frac{\frac{3}{2} t}{t^2} (t-0) = \frac{\frac{3}{2}t^2}{t^2} = \frac{3}{2}$\\
+        	$\lim_{t \rightarrow 0} \frac{-(1+t)}{2t^2} (t-0)^2 = \frac{-(1+t)t^2}{t^2} = \frac{-(1+t)}{2} = -\frac{1}{2}$\\
+        	
+        	Como $x = 0$ es un punto singular, podemos aplicar el método de Frobenius.
+        	
+        	Proponemos $\sum_{n = 0}^{\infty} a_n t ^{n + r}, \ a_0 \neq 0$\\
+        	Calculamos $\dot{y}(t) = \sum_{n = 0}^{\infty} (n + r)a_n t ^{n + r -1}$\\
+        	Y $\ddot{y}(t) = \sum_{n = 0}^{\infty} (n + r)(n + r -1)a_n t ^{n + r -2}$\\
+        	
+        	Y sustituimos en la ecuación:\\
+        	$ \sum_{n = 0}^{\infty} (n + r)(n + r -1)a_n t ^{n + r} + \frac{3}{2}\sum_{n = 0}^{\infty} (n + r)a_n t ^{n + r} - \frac{(1 + t)}{2} \sum_{n = 0}^{\infty} a_n t ^{n + r}$\\
+        	$ \sum_{n = 0}^{\infty} [(n + r)(n + r -1) + \frac{3}{2}(n + r)  - \frac{1 }{2}] a_n t ^{n + r}  + \sum_{n = 0}^{\infty} - \frac{1}{2} a_{n} t ^{n + r+ 1}$\\
+        	
+        	Proponer la suma de coeficientes como potencias de t igual a cero da:
+        	
+        	$(r)(r -1) + \frac{3}{2}(r)  - \frac{1}{2}$\\
+        	$r^2 + \frac{1}{2}r - \frac{1}{2}$\\
+        	$(r + 1)(r - \frac{1}{2})$\\
+        	
+        	Entonces tenemos nuestras raíces $r_1 = -1, r_2 = \frac{1}{2}$, como estas raíces no difieren por un entero, podemos encontrar dos soluciones independientes de la forma $\sum_{n = 0}^{\infty} a_n t ^{n + r}$ con $a_n$ determinada por  
+        	
+        	$[(n + r)(n + r -1) + \frac{3}{2}(n + r)  - \frac{1 }{2}]a_n = \frac{1}{2}a_{n-1}$
+        	
+        	
+        	Por lo tanto la solución general de la ecuación es:\\
+        	
+        	$\frac{c_1}{t}(1 - \frac{t^2}{2!} - \frac{t^3}{3 \cdot 3 !} - \frac{t^4}{3 \cdot 5 \cdot 4 !} - \dots) + c_2 \sqrt{t} (1 + \frac{t}{5} + \frac{t^2}{5 \cdot 7 \cdot 2 !} + \frac{t^3}{5 \cdot 7 \cdot 9 \cdot 3 !} + \dots)$\\
         }
 
         % Ejercicio 5
@@ -196,7 +347,7 @@
 
         % Ejercicio 6
         \item {
-            Invertigar las soluciones del método de Frobenius cuando $r_2 - r_1$
+            Investigar las soluciones del método de Frobenius cuando $r_2 - r_1$
             es entero y cuando $r_1 = r_2$.
 
             \color{azul}
@@ -358,224 +509,224 @@
 
         % Ejercicio 8 
         \item {
-            $\ddot y - 5 \dot y + 4y = e^{2t}$ con $y(0) = 1$ y $\dot y(0) = -1$.
-
-            \color{azul}
-            % Respuesta
-            Primero, hay que sacar la transformada de Laplace de toda la ecuación
-            para despejar $Y(s)$.
-            \begin{align*}
-                \mathcal{L}\{\ddot y - 5 \dot y + 4y\} &= \mathcal{L}\{e^{2t}\} \\
-                \mathcal{L}\{\ddot y\} - 5\mathcal{L}\{\dot y\} + 4 \mathcal{L}\{y\}
-                &= \mathcal{L}\{e^{2t}\} \\
-                s^2 Y(s) - s y(0) - \dot y(0) - 5 (sY(s) - y(0)) + 4Y(s) 
-                &= \frac{1}{s - 2} \\
-                s^2 Y(s) - s + 1 - 5s Y(s) + 5 + 4 Y(s) &= \frac{1}{s - 2} \\
-                Y(s) (s^2 - 5s + 4) + s + 6 &= \frac{1}{s - 2} \\
-                Y(s) &= \frac{1}{(s-2)(s-4)(s-1)} - \frac{(s+6)}{(s-4)(s-1)}\\
-            \end{align*}
-
-            Luego, descomponiendo en fracciones parciales.\\
-            Primero
-            \begin{align*}
-                \frac{1}{(s-2)(s-4)(s-1)}=&\frac{A}{s-2} + \frac{B}{s-4} + \frac{C}{s-1} \\
-                =&\frac{A(s-4)(s-1) + B(s-2)(s-1) + C(s-2)(s-4)}{(s-2)(s-4)(s-1)} \\
-                &\iff A(s-4)(s-1) + B(s-2)(s-1) + C(s-2)(s-4) = 1
-            \end{align*}
-            Evaluando en $s = 2$, tenemos
-            \[-4A = 1 \iff A = -\frac{1}{4}\]
-            Evaluando en $s = 4$ tenemos
-            \[6B = 1 \iff B = \frac{1}{6}\]
-            Evaluando en $s = 1$ tenemos
-            \[3C = 1 \iff C = \frac{1}{3}\]
-
-            Segundo
-            \begin{align*}
-                \frac{s+6}{(s-4)(s-1)} &= \frac{D}{s-4} + \frac{E}{s-1} \\
-                &= \frac{D(s-1) + E(s-4)}{(s-4)(s-1)} \\
-                &\iff D(s-1) + E(s-4) = s+6
-            \end{align*}
-            Evaluando en $s = 4$ tenemos que
-            \[3D = 10 \iff D = \frac{10}{3}\]
-            Evaluando en $s = 1$ tenemos que
-            \[-3E = 7 \iff E = -\frac{7}{3}\]
-
-            Juntando estas dos cosas, tenemos que 
-            \begin{align*}
-                Y(s) &= -\frac{1}{4} \frac{1}{s-2} + \frac{1}{6} \frac{1}{s-4}
-                \frac{1}{3} \frac{1}{s-1} + \frac{10}{3} \frac{1}{s-4} 
-                - \frac{7}{3} \frac{1}{s-1} \\
-                &= -\frac{1}{4} \frac{1}{s-2} + \frac{7}{2}\frac{1}{s-4} 
-                - 2\frac{1}{s-1}
-            \end{align*}
-            De aquí tenemos que 
-            \begin{align*}
-                \mathcal{L}^{-1}\{Y(s)\} &= \mathcal{L}^{-1}\{\frac{1}{4} \frac{1}{s-2} 
-                + \frac{7}{2}\frac{1}{s-4} - 2\frac{1}{s-1}\} \\
-                y(t) &= \frac{1}{4}\mathcal{L}^{-1}\{\frac{1}{s-2}\}
-                +\frac{7}{2}\mathcal{L}^{-1}\{\frac{1}{s-4}\}
-                -2\mathcal{L}^{-1}\{\frac{1}{s-1}\} \\
-                y(t) &= \frac{1}{4}e^{2t}+\frac{7}{2}e^{4t}-2e^{t}
-            \end{align*}
-            Que es la solución buscada.
+        	$\ddot y - 5 \dot y + 4y = e^{2t}$ con $y(0) = 1$ y $\dot y(0) = -1$.
+        	
+        	\color{azul}
+        	% Respuesta
+        	Primero, hay que sacar la transformada de Laplace de toda la ecuación
+        	para despejar $Y(s)$.
+        	\begin{align*}
+        	\mathcal{L}\{\ddot y - 5 \dot y + 4y\} &= \mathcal{L}\{e^{2t}\} \\
+        	\mathcal{L}\{\ddot y\} - 5\mathcal{L}\{\dot y\} + 4 \mathcal{L}\{y\}
+        	&= \mathcal{L}\{e^{2t}\} \\
+        	s^2 Y(s) - s y(0) - \dot y(0) - 5 (sY(s) - y(0)) + 4Y(s) 
+        	&= \frac{1}{s - 2} \\
+        	s^2 Y(s) - s + 1 - 5s Y(s) + 5 + 4 Y(s) &= \frac{1}{s - 2} \\
+        	Y(s) (s^2 - 5s + 4) - s + 6 &= \frac{1}{s - 2} \\
+        	Y(s) &= \frac{1}{(s-2)(s-4)(s-1)} + \frac{(s-6)}{(s-4)(s-1)}\\
+        	\end{align*}
+        	
+        	Luego, descomponiendo en fracciones parciales.\\
+        	Primero
+        	\begin{align*}
+        	\frac{1}{(s-2)(s-4)(s-1)}=&\frac{A}{s-2} + \frac{B}{s-4} + \frac{C}{s-1} \\
+        	=&\frac{A(s-4)(s-1) + B(s-2)(s-1) + C(s-2)(s-4)}{(s-2)(s-4)(s-1)} \\
+        	&\iff A(s-4)(s-1) + B(s-2)(s-1) + C(s-2)(s-4) = 1
+        	\end{align*}
+        	Evaluando en $s = 2$, tenemos
+        	\[-2A = 1 \iff A = -\frac{1}{2}\]
+        	Evaluando en $s = 4$ tenemos
+        	\[6B = 1 \iff B = \frac{1}{6}\]
+        	Evaluando en $s = 1$ tenemos
+        	\[3C = 1 \iff C = \frac{1}{3}\]
+        	
+        	Segundo
+        	\begin{align*}
+        	\frac{s-6}{(s-4)(s-1)} &= \frac{D}{s-4} + \frac{E}{s-1} \\
+        	&= \frac{D(s-1) + E(s-4)}{(s-4)(s-1)} \\
+        	&\iff D(s-1) + E(s-4) = s-6
+        	\end{align*}
+        	Evaluando en $s = 4$ tenemos que
+        	\[3D = -2 \iff D = -\frac{2}{3}\]
+        	Evaluando en $s = 1$ tenemos que
+        	\[-3E = -5 \iff E = \frac{5}{3}\]
+        	
+        	Juntando estas dos cosas, tenemos que 
+        	\begin{align*}
+        	Y(s) &= -\frac{1}{2} \frac{1}{s-2} + \frac{1}{6} \frac{1}{s-4}
+        	+ \frac{1}{3} \frac{1}{s-1} - \frac{2}{3} \frac{1}{s-4} 
+        	+ \frac{5}{3} \frac{1}{s-1} \\
+        	&= -\frac{1}{2} \frac{1}{s-2} - \frac{1}{2}\frac{1}{s-4} 
+        	+ 2\frac{1}{s-1}
+        	\end{align*}
+        	De aquí tenemos que 
+        	\begin{align*}
+        	\mathcal{L}^{-1}\{Y(s)\} &= \mathcal{L}^{-1}\{-\frac{1}{2} \frac{1}{s-2} 
+        	- \frac{1}{2}\frac{1}{s-4} + 2\frac{1}{s-1}\} \\
+        	y(t) &= -\frac{1}{2}\mathcal{L}^{-1}\{\frac{1}{s-2}\}
+        	-\frac{1}{2}\mathcal{L}^{-1}\{\frac{1}{s-4}\}
+        	+2\mathcal{L}^{-1}\{\frac{1}{s-1}\} \\
+        	y(t) &= -\frac{1}{2}e^{2t}-\frac{1}{2}e^{4t}+2e^{t}
+        	\end{align*}
+        	Que es la solución buscada.
         }
-
+        
         % Ejercicio 9
         \item {
-            $\ddot y + y = t\sen t$ con $y(0) = 1$ y  $\dot y(0) = 2$.
-
-            \color{azul}
-            % Respuesta
-            Primero, hay que sacar la transformada de Laplace de toda la
-            ecuación para despejar $Y(s)$.
-            \begin{align*}
-                \mathcal{L}\{\ddot y + y\} &= \mathcal{L}\{t\sen t\} \\
-                \mathcal{L}\{\ddot y\} + \mathcal{L}\{y\}
-                &= -\frac{d}{ds}\mathcal{L}\{\sen t\}\\
-                s^2 Y(s) - s y(0) - \dot y(0) + Y(s) 
-                &= -\frac{d}{ds}\frac{1}{s^2+1}\\
-                s^2 Y(s) - s - 2 + Y(s) &= \frac{2s}{(s^2+1)^2} \\
-                Y(s) (s^2+1) - s - 2 &= \frac{2s}{(s^2+1)^2}\\
-                Y(s) &= \frac{2s}{(s^2+1)^3} + \frac{s+2}{s^2+1} \\
-                Y(s) &= 2\frac{s}{s^2+1}\frac{1}{s^2+1}\frac{1}{s^2+1}
-                + \frac{s}{s^2+1} + 2\frac{1}{s^2+1}
-            \end{align*}
-            Ahora, hay que sacar la transformada inversa.
-            \begin{align*}
-                \mathcal{L}^{-1}\{Y(s)\} 
-                    &= \mathcal{L}^{-1}\{
-                        2\frac{s}{s^2+1}\frac{1}{s^2+1}\frac{1}{s^2+1}
-                        + \frac{s}{s^2+1} + 2\frac{1}{s^2+1}
-                    \} \\
-                y(t) &= 2\mathcal{L}^{-1}\{\frac{s}{s^2+1}\frac{1}{s^2+1}\frac{1}{s^2+1}\} 
-                    + \mathcal{L}^{-1}\{\frac{s}{s^2+1}\} + 2\mathcal{L}^{-1}\{\frac{1}{s^2+1}\}
-                    \\
-                y(t) &= 2\cos{t}\sin^{2}{t} + \cos{t} + 2\sin{t}
-            \end{align*}
-            Que es la solución buscada.
+        	$\ddot y + y = t\sen t$ con $y(0) = 1$ y  $\dot y(0) = 2$.
+        	
+        	\color{azul}
+        	% Respuesta
+        	Primero, hay que sacar la transformada de Laplace de toda la
+        	ecuación para despejar $Y(s)$.
+        	\begin{align*}
+        	\mathcal{L}\{\ddot y + y\} &= \mathcal{L}\{t\sen t\} \\
+        	\mathcal{L}\{\ddot y\} + \mathcal{L}\{y\}
+        	&= -\frac{d}{ds}\mathcal{L}\{\sen t\}\\
+        	s^2 Y(s) - s y(0) - \dot y(0) + Y(s) 
+        	&= -\frac{d}{ds}\frac{1}{s^2+1}\\
+        	s^2 Y(s) - s - 2 + Y(s) &= \frac{2s}{(s^2+1)^2} \\
+        	Y(s) (s^2+1) - s - 2 &= \frac{2s}{(s^2+1)^2}\\
+        	Y(s) &= \frac{2s}{(s^2+1)^3} + \frac{s+2}{s^2+1} \\
+        	Y(s) &= 2\frac{s}{s^2+1}\frac{1}{s^2+1}\frac{1}{s^2+1}
+        	+ \frac{s}{s^2+1} + 2\frac{1}{s^2+1}
+        	\end{align*}
+        	Ahora, hay que sacar la transformada inversa.
+        	\begin{align*}
+        	\mathcal{L}^{-1}\{Y(s)\} 
+        	&= \mathcal{L}^{-1}\{
+        	2\frac{s}{s^2+1}\frac{1}{s^2+1}\frac{1}{s^2+1}
+        	+ \frac{s}{s^2+1} + 2\frac{1}{s^2+1}
+        	\} \\
+        	y(t) &= 2\mathcal{L}^{-1}\{\frac{s}{s^2+1}\frac{1}{s^2+1}\frac{1}{s^2+1}\} 
+        	+ \mathcal{L}^{-1}\{\frac{s}{s^2+1}\} + 2\mathcal{L}^{-1}\{\frac{1}{s^2+1}\}
+        	\\
+        	y(t) &= 2\cos{t}\sin^{2}{t} + \cos{t} + 2\sin{t}
+        	\end{align*}
+        	Que es la solución buscada.\\
         }
-
+        
         % Ejercicio 10
         \item {
-            $\ddot y + \dot y + y = 1 + e^{-t}$ con $y(0) = 3$ y $\dot y(0) = -5$.
-
-            \color{azul}
-            % Respuesta
-        
-            Primero hay qu sacar la transformada de 
-            Laplace de toda la ecuación, e intentar despejar $Y(s)$.
-            \begin{align*}
-                \mathcal{L}\{\ddot y + \dot y + y\} &= \mathcal{L}\{1 + e^{-t}\}\\
-                \mathcal{L}\{\ddot y\} + \mathcal{L}\{\dot y\} + \mathcal{L}\{y\}
-                &= \mathcal{L}\{1\} + \mathcal{L}\{e^{-t}\} \\
-                s^2 Y(s) - s y(0) - \dot y(0) + sY(s) - y(0) + Y(s) &= \frac{1}{s}
-                + \frac{1}{s+1} \\
-                s^2 Y(s) - 3s + 5 + s Y(s) - 3 + Y(s) &= \frac{1}{s} + \frac{1}{s+1}\\
-                Y(s) (s^2 + s + 1) - (3s-2) &= \frac{1}{s} + \frac{1}{s+1}\\
-                Y(s) &= \frac{1}{s(s^2 + s + 1)} + \frac{1}{(s+1)(s^2 + s + 1)} 
-                + \frac{3s-2}{s^2 + s + 1}
-            \end{align*}
-            Luego, descompongamos algunas de las expresiones en fraccciones
-            parciales.
-            Primero
-            \begin{align*}
-                \frac{1}{s(s^2+s+1)} &= \frac{A}{s} + \frac{Bs + C}{s^2+s+1} \\
-                &= \frac{As^2+As+A+Bs^2+Cs}{s(s^2+s+1)} \\
-                &\iff 1 = As^2+As+A+Bs^2+Cs
-            \end{align*}
-            Que nos define un sistemas de ecuaciones lineales.
-
-            Para resolverlo, primero obtenemos
-            \[A = 1\]
-            Y usando este valor de $A$, podemos obtener
-            \[A + C = 0 \implies C = -1\]
-            Y
-            \[A + B = 0 \implies B = -1\]
-            Luego, para la otra expresión
-            \begin{align*}
-                \frac{1}{(s+1)(s^2 + s + 1)} &= \frac{A}{s+1} + \frac{Bs+C}{s^2+s+1} \\
-                &= \frac{As^2+As+A+Bs^2+Bs+Cs+C}{s(s^2+s+1)} \\
-                &\iff 1 = 
-            \end{align*}
-            Que defines un sistema de ecuaciones.
-            \begin{align*}
-                A + B &= 0 \\
-                A + B + C &= 0 \\
-                A + C &= 1
-            \end{align*}
-            Para resolverlo, primero restamos las dos primeras ecuaciones
-            \[(A+B)-(A+B+C) = 0 - 0 \implies C = 0\]
-            Sustituyendo en la tercera ecuación, obtenemos
-            \[A + 0 = 1 \implies A = 1\]
-            Y sustituyendo esto en la primera tenemos que
-            \[1 + B = 0 \implies B = -1\]
-
-            Con esto, se puede reescribir $Y(s)$ como 
-            \begin{align*}
-                Y(s) &= \frac{1}{s} - \frac{s+1}{s^2+s+1} + \frac{1}{s+1} 
-                - \frac{s}{s^2+s+1} + \frac{3s-2}{s^2+s+1} \\
-                Y(s) &= \frac{1}{s} + \frac{1}{s+1} + \frac{s-3}{s^2+s+1} \\
-            \end{align*}
-
-            Luego, notemos que $\mathcal{L}\{e^{at}f(t)\} = F(s-a)$, 
-            donde $F(s) = \mathcal{L}\{f(t)\}$.
-
-            Por lo que en particular
-            \[\mathcal{L}\{e^{-at}\cos(bt)\} = \frac{s+a}{(s+a)^2+b^2}\]
-            Y 
-            \[\mathcal{L}\{e^{-at}\sin(bt)\} = \frac{b}{(s+a)^2+b^2}\]
-
-
-            Ahora, vamos a llevar al último término a una forma similar a esta.
-
-            Primera, completamos el cuadrado del denominador
-            \[
-                \frac{s-3}{s^2+s+1} 
-                = \frac{s-3}{s^2+s+\frac{1}{4} + \frac{3}{4}}
-                = \frac{s-3}{(s+\frac{1}{2})^2+\frac{3}{4}}
-            \]
-
-            Luego, forzamos a que la constante de nominador coincida con la
-            constante del cuadrado, aunque esto divide la expresión en dos.
-            \[
-                \frac{s-3}{(s+\frac{1}{2})^2+\frac{3}{4}} 
-                = \frac{s+\frac{1}{2}}{(s+\frac{1}{2})^2+\frac{3}{4}}
-                - \frac{7}{2}\frac{1}{(s+\frac{1}{2})^2+\frac{3}{4}}
-            \]
-            Ahora, en esta otra parte, hay que forzar a que el nominador sea la
-            raíz del nominador.
-            \[
-                \frac{7}{2}\frac{1}{(s+\frac{1}{2})^2+\frac{3}{4}} 
-                = \frac{7}{2} \frac{1}{(s+\frac{1}{2})^2+\frac{3}{4}}
-                \cdot \frac{\frac{\sqrt{3}}{2}}{\frac{\sqrt{3}}{2}}
-                = \frac{7}{\sqrt{3}}\frac{\frac{\sqrt{3}}{2}}{(s+\frac{1}{2})
-                +\frac{3}{4}}
-            \]
-            
-            Entonces, se reescribe $Y(s)$ como 
-            \[
-                Y(s) = \frac{1}{s} + \frac{1}{s+1}
-                + \frac{s+\frac{1}{2}}{(s+\frac{1}{2})^2+\frac{3}{4}}
-                -\frac{7}{\sqrt{3}}\frac{\frac{\sqrt{3}}{2}}{(s+\frac{1}{2})+\frac{3}{4}}
-            \]
-
-            Ahora, resolviendo para encontrar la inversa de esto
-            \begin{align*}
-                \mathcal{L}^{-1}\{Y(s)\} 
-                &= \mathcal{L}^{-1}\{
-                    \frac{1}{s} + \frac{1}{s+1}
-                    + \frac{s+\frac{1}{2}}{(s+\frac{1}{2})^2+\frac{3}{4}}
-                    - \frac{7}{\sqrt{3}}\frac{\frac{\sqrt{3}}{2}}{(s+\frac{1}{2})+\frac{3}{4}}
-                \} \\
-                y(t) &= \mathcal{L}^{-1}\{\frac{1}{s}\} 
-                    + \mathcal{L}^{-1}\{\frac{1}{s+1}\}
-                    + \mathcal{L}^{-1}\{\frac{s+\frac{1}{2}}{(s+\frac{1}{2})^2+\frac{3}{4}}\} 
-                    - \frac{7}{\sqrt{3}} \cdot \mathcal{L}^{-1}\{\frac{\frac{\sqrt{3}}{2}}{(s+\frac{1}{2})+\frac{3}{4}}\}
-                    \\
-                y(t) &= 1 + e^{-t} + e^{-\frac{1}{2}t}\sin{\frac{3}{4}t}
-                    - \frac{7}{\sqrt{3}}\cdot e^{-\frac{1}{2}t}\cos{\frac{3}{4}t}
-            \end{align*}
-            Que es la solución buscada.
+        	$\ddot y + \dot y + y = 1 + e^{-t}$ con $y(0) = 3$ y $\dot y(0) = -5$.
+        	
+        	\color{azul}
+        	% Respuesta
+        	
+        	Primero hay qu sacar la transformada de 
+        	Laplace de toda la ecuacioń, e intentar despejar $Y(s)$.
+        	\begin{align*}
+        	\mathcal{L}\{\ddot y + \dot y + y\} &= \mathcal{L}\{1 + e^{-t}\}\\
+        	\mathcal{L}\{\ddot y\} + \mathcal{L}\{\dot y\} + \mathcal{L}\{y\}
+        	&= \mathcal{L}\{1\} + \mathcal{L}\{e^{-t}\} \\
+        	s^2 Y(s) - s y(0) - \dot y(0) + sY(s) - y(0) + Y(s) &= \frac{1}{s}
+        	+ \frac{1}{s+1} \\
+        	s^2 Y(s) - 3s + 5 + s Y(s) - 3 + Y(s) &= \frac{1}{s} + \frac{1}{s+1}\\
+        	Y(s) (s^2 + s + 1) - (3s-2) &= \frac{1}{s} + \frac{1}{s+1}\\
+        	Y(s) &= \frac{1}{s(s^2 + s + 1)} + \frac{1}{(s+1)(s^2 + s + 1)} 
+        	+ \frac{3s-2}{s^2 + s + 1}
+        	\end{align*}
+        	Luego, descompongamos algunas de las expresiones en fraccciones
+        	parciales.
+        	Primero
+        	\begin{align*}
+        	\frac{1}{s(s^2+s+1)} &= \frac{A}{s} + \frac{Bs + C}{s^2+s+1} \\
+        	&= \frac{As^2+As+A+Bs^2+Cs}{s(s^2+s+1)} \\
+        	&\iff 1 = As^2+As+A+Bs^2+Cs
+        	\end{align*}
+        	Que nos define un sistemas de ecuaciones lineales.
+        	
+        	Para resolverlo, primero obtenemos
+        	\[A = 1\]
+        	Y usando este valor de $A$, podemos obtener
+        	\[A + C = 0 \implies C = -1\]
+        	Y
+        	\[A + B = 0 \implies B = -1\]
+        	Luego, para la otra expresión
+        	\begin{align*}
+        	\frac{1}{(s+1)(s^2 + s + 1)} &= \frac{A}{s+1} + \frac{Bs+C}{s^2+s+1} \\
+        	&= \frac{As^2+As+A+Bs^2+Bs+Cs+C}{s(s^2+s+1)} \\
+        	&\iff 1 = 
+        	\end{align*}
+        	Que defines un sistema de ecuaciones.
+        	\begin{align*}
+        	A + B &= 0 \\
+        	A + B + C &= 0 \\
+        	A + C &= 1
+        	\end{align*}
+        	Para resolverlo, primero restamos las dos primeras ecuaciones
+        	\[(A+B)-(A+B+C) = 0 - 0 \implies C = 0\]
+        	Sustituyendo en la tercera ecuación, obtenemos
+        	\[A + 0 = 1 \implies A = 1\]
+        	Y sustituyendo esto en la primera tenemos que
+        	\[1 + B = 0 \implies B = -1\]
+        	
+        	Con esto, se puede reescribir $Y(s)$ como 
+        	\begin{align*}
+        	Y(s) &= \frac{1}{s} - \frac{s+1}{s^2+s+1} + \frac{1}{s+1} 
+        	- \frac{s}{s^2+s+1} + \frac{3s-2}{s^2+s+1} \\
+        	Y(s) &= \frac{1}{s} + \frac{1}{s+1} + \frac{s-3}{s^2+s+1} \\
+        	\end{align*}
+        	
+        	Luego, notemos que $\mathcal{L}\{e^{at}f(t)\} = F(s-a)$, 
+        	donde $F(s) = \mathcal{L}\{f(t)\}$.
+        	
+        	Por lo que en particular
+        	\[\mathcal{L}\{e^{-at}\cos(bt)\} = \frac{s+a}{(s+a)^2+b^2}\]
+        	Y 
+        	\[\mathcal{L}\{e^{-at}\sin(bt)\} = \frac{b}{(s+a)^2+b^2}\]
+        	
+        	
+        	Ahora, vamos a llevar al último término a una forma similar a esta.
+        	
+        	Primera, completamos el cuadrado del denominador
+        	\[
+        	\frac{s-3}{s^2+s+1} 
+        	= \frac{s-3}{s^2+s+\frac{1}{4} + \frac{3}{4}}
+        	= \frac{s-3}{(s+\frac{1}{2})^2+\frac{3}{4}}
+        	\]
+        	
+        	Luego, forzamos a que la constante de nominador coincida con la
+        	constante del cuadrado, aunque esto divide la expresión en dos.
+        	\[
+        	\frac{s-3}{(s+\frac{1}{2})^2+\frac{3}{4}} 
+        	= \frac{s+\frac{1}{2}}{(s+\frac{1}{2})^2+\frac{3}{4}}
+        	- \frac{7}{2}\frac{1}{(s+\frac{1}{2})^2+\frac{3}{4}}
+        	\]
+        	Ahora, en esta otra parte, hay que forzar a que el nominador sea la
+        	raíz del nominador.
+        	\[
+        	\frac{7}{2}\frac{1}{(s+\frac{1}{2})^2+\frac{3}{4}} 
+        	= \frac{7}{2} \frac{1}{(s+\frac{1}{2})^2+\frac{3}{4}}
+        	\cdot \frac{\frac{\sqrt{3}}{2}}{\frac{\sqrt{3}}{2}}
+        	= \frac{7}{\sqrt{3}}\frac{\frac{\sqrt{3}}{2}}{(s+\frac{1}{2})
+        		+\frac{3}{4}}
+        	\]
+        	
+        	Entonces, se reescribe $Y(s)$ como 
+        	\[
+        	Y(s) = \frac{1}{s} + \frac{1}{s+1}
+        	+ \frac{s+\frac{1}{2}}{(s+\frac{1}{2})^2+\frac{3}{4}}
+        	-\frac{7}{\sqrt{3}}\frac{\frac{\sqrt{3}}{2}}{(s+\frac{1}{2})+\frac{3}{4}}
+        	\]
+        	
+        	Ahora, resolviendo para encontrar la inversa de esto
+        	\begin{align*}
+        	\mathcal{L}^{-1}\{Y(s)\} 
+        	&= \mathcal{L}^{-1}\{
+        	\frac{1}{s} + \frac{1}{s+1}
+        	+ \frac{s+\frac{1}{2}}{(s+\frac{1}{2})^2+\frac{3}{4}}
+        	- \frac{7}{\sqrt{3}}\frac{\frac{\sqrt{3}}{2}}{(s+\frac{1}{2})+\frac{3}{4}}
+        	\} \\
+        	y(t) &= \mathcal{L}^{-1}\{\frac{1}{s}\} 
+        	+ \mathcal{L}^{-1}\{\frac{1}{s+1}\}
+        	+ \mathcal{L}^{-1}\{\frac{s+\frac{1}{2}}{(s+\frac{1}{2})^2+\frac{3}{4}}\} 
+        	- \frac{7}{\sqrt{3}} \cdot \mathcal{L}^{-1}\{\frac{\frac{\sqrt{3}}{2}}{(s+\frac{1}{2})+\frac{3}{4}}\}
+        	\\
+        	y(t) &= 1 + e^{-t} + e^{-\frac{1}{2}t}\cos{\frac{\sqrt{3}}{2}t}
+        	- \frac{7}{\sqrt{3}}\cdot e^{-\frac{1}{2}t}\sin{\frac{\sqrt{3}}{2}t}
+        	\end{align*}
+        	Que es la solución buscada.
         }
     \end{enumerate}
 \end{document}
