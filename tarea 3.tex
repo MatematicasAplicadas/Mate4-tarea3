@@ -5,6 +5,9 @@
 \usepackage{amssymb}
 \usepackage{cancel}
 
+\usepackage{amsthm}
+\newtheorem{teo}{Teorema}
+
 \usepackage{anysize}
 \marginsize{1.3cm}{1.3cm}{1.3cm}{1.3cm}
 
@@ -30,7 +33,7 @@
         
         % Ejercicio 1
         \item {
-            $(t - 2)^2 \ddot y + 5(t-2)\dot y+4y=0$\\
+            $(t - 2)^2 \ddot y + 5(t-2)\dot y+4y=0$
 
             \color{azul}
             % Respuesta
@@ -38,7 +41,7 @@
         }
         % Ejercicio 2
         \item {
-            $t^2 \ddot y+ 3t \dot y + 2y =0$\\
+            $t^2 \ddot y+ 3t \dot y + 2y =0$
 
             \color{azul}
             % Respuesta
@@ -72,7 +75,9 @@
             \[
                 \ddot y + \frac{t^2-t}{2t^2}\dot y + \frac{1}{2t^2}y = 0
             \]
-            Tanto $P(t)=\frac{t^2-t}{2t^2}$ como $Q(t)=\frac{1}{2t^2}$ se indeterminan cuando $t=0$, por lo que $t_0=0$ es un punto singular, veamos que $t_0$ es regular pues tanto $t\cdot P(t)$ como $t^2\cdot Q(t)$ son analíticas.
+            Tanto $P(t)=\frac{t^2-t}{2t^2}$ como $Q(t)=\frac{1}{2t^2}$ se indeterminan cuando $t=0$, por lo que $t_0=0$
+            es un punto singular, veamos que $t_0$ es regular pues tanto $t\cdot P(t)$ como $t^2\cdot Q(t)$ son
+            analíticas.
             \[
                 \lim_{t_0 \to 0}{t\cdot\frac{t^2-t}{2t^2}}
                 =\lim_{t_0\to 0}{\frac{t-1}{2}}
@@ -83,9 +88,11 @@
                 =\lim_{t_0\to 0}{\frac{1}{2}}
                 =\frac{1}{2}=q_0
             \]
-            La ecuación indicial asociada al a ecuación diferencial es $r^2+(-\frac{1}{2}-1)r+\frac{1}{2}=0$, que simplificada es $2r^2-3r+1=0$ y cuyas raíces son $r_1=1$ y $r_2=\frac{1}{2}$
+            La ecuación indicial asociada al a ecuación diferencial es $r^2+(-\frac{1}{2}-1)r+\frac{1}{2}=0$, que
+            simplificada es $2r^2-3r+1=0$ y cuyas raíces son $r_1=1$ y $r_2=\frac{1}{2}$
 
-            Como $r_1=r_2+\lambda$, siendo $\lambda$ un entero fraccionario, se propone que ambas soluciones sean de la forma
+            Como $r_1=r_2+\lambda$, siendo $\lambda$ un entero fraccionario, se propone que ambas soluciones sean de la
+            forma
             $$y(t)=t^r\sum_{n=0}^{\infty}{c_nt^n}=\sum_{n=0}^{\infty}{c_nt^{n+r}}$$
             por lo que
             $$\dot y(t)=\sum_{n=0}^{\infty}{c_n(n+r)t^{n+r-1}}$$
@@ -106,7 +113,8 @@
                 \sum_{n=0}^{\infty}{[2(n+r)(n+r-1)-(n+r)+1]c_nt^{n+r}}
                 +\sum_{n=0}^{\infty}{c_n(n+r)t^{n+r+1}}=0
             \]
-            Calculamos el primer término de la primera suma para tener el mismo exponente en la $t$ despues de ajustar los índices
+            Calculamos el primer término de la primera suma para tener el mismo exponente en la $t$ después de ajustar
+            los índices
             \[
                 \left(2r(r-1)-r+1\right)c_0t^r
                 +\sum_{n=1}^{\infty}{[2(n+r)(n+r-1)-(n+r)+1]c_nt^{n+r}}
@@ -131,7 +139,8 @@
                 }=0
             \]
             Igualamos todos los coeficientes a cero. Notemos que el primer término se reduce a la ecuación indicial:\\
-            $2r^2-3r+1=0$ cuyas raíces recordemos son $r_1=1$ y $r_2=\frac{1}{2}$. Con los demás coeficientes obtenemos la relación de recurrencia
+            $2r^2-3r+1=0$ cuyas raíces recordemos son $r_1=1$ y $r_2=\frac{1}{2}$. Con los demás coeficientes obtenemos
+            la relación de recurrencia
             \[
                 [2(n+r+1)-1](n+r)c_{n+1}+(n+r)c_n=0
             \]
@@ -191,7 +200,43 @@
             es entero y cuando $r_1 = r_2$.
 
             \color{azul}
-            % Respuesta
+            \begin{teo}
+                \footnote{\c{C}engel, Y.\&Palm W.. (2014). Ecuaciones diferenciales para ingeniería y ciencias. México:
+                McGraw Hill.}
+                Sea el punto $x=0$ un punto singular regular de la ecuación diferencial:
+                $$y''+P(x)y'+Q(x)y=0$$
+                y sea $\rho$ el menor radio de convergencia de dos funciones $p(x)=xP(x)$ y $q(x)=x^2Q(x)$. Si $r_1$ y
+                $r_2$ son las raíces de la ecuación indicial:
+                $$r^2+(p_0-1)r+q_0=0$$
+                donde
+                \begin{eqnarray*}
+                    p_0=\lim_{x\to 0}xP(x) & \text{ y } & q_0=\lim_{x\to 0}x^2Q(x)
+                \end{eqnarray*}
+                y $r_1>r_2$ cuando las raíces son reales y desiguales, entonces existen dos soluciones linealmente
+                independientes $y_1(x)$ y $y_2(x)$ de esta ecuación diferencial, con un radio de convergencia de
+                $\rho$. Para $x>0$, son de las siguientes formas:
+
+                {\bf Caso 1:} $r_1=r_2+\lambda$ ($\lambda$ es positiva no entera)
+                \begin{eqnarray*}
+                    y_1=x^{r_1}\sum_{n=0}^{\infty}{a_nx^n} & (a_0\neq 0) \\
+                    y_2=x^{r_2}\sum_{n=0}^{\infty}{b_nx^n} & (b_0\neq 0) 
+                \end{eqnarray*}
+                {\bf Caso 2:} $r_1=r_2=r$
+                \begin{eqnarray*}
+                    y_1=x^{r}\sum_{n=0}^{\infty}{a_nx^n} & (a_0\neq 0) \\
+                    y_2=y_1\ln{x}+x^{r}\sum_{n=1}^{\infty}{b_nx^n}
+                \end{eqnarray*}
+                {\bf Caso 3:} $r_1=r_2+N$ ($N$ es un entero positivo)
+                \begin{eqnarray*}
+                    y_1=x^{r_1}\sum_{n=0}^{\infty}{a_nx^n} & (a_0\neq 0) \\
+                    y_2=Cy_1\ln{x}+x^{r_2}\sum_{n=0}^{\infty}{b_nx^n} & (b_0\neq 0)
+                \end{eqnarray*}
+                donde la constante $C$ puede ser cero. Entonces, la solución general de la ecuación diferencial para
+                los tres casos se expresa como
+                $$y=C_1y_1(x)+C_2y_2(x)$$
+                donde las constantes arbitrarias $C_1$ y $C_2$ se determinan por las condiciones iniciales y en la
+                frontera.
+            \end{teo}
         }
 
         % Ejercicio 7
